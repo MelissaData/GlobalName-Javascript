@@ -1,0 +1,228 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Global Name Demo</title>	
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.css"/>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.7/semantic.min.js"></script>
+    <style>
+        .header img {
+            float: right;
+            width: 188px;
+            height: 80px;
+            background: #555;
+        }
+
+        .header h2 {
+            position: relative;
+            top: 18px;
+            left: 10px;
+        }
+    </style>
+</head>
+<body class="ui container">
+    <p>	
+    <div class="header">
+        <img src="melissa-global-intelligence.jpg" width="188" height="80" alt="logo" />
+        <h2 class="ui header">Global Name Demo</h2>		
+		<br>
+    </div>	
+	<br>
+	<div class="wiki">	
+	</div>
+    <div class="main ui container">	
+        <div class="ui top attached tabular menu">
+            <a class="item active" data-tab="tab-name">Input</a>
+			<a class="item" data-tab="tab-name3">Request</a>
+            <a class="item" data-tab="tab-name2">Output</a>
+        </div>
+        <!-- Input tab -->
+        <div class="ui bottom attached tab segment active" data-tab="tab-name">
+            <div class="ui two column stackable grid container">
+                <div class="column">
+				<a href="http://wiki.melissadata.com/index.php?title=Global_Name">Global Name Wiki</a>
+                    
+                    <!-- License Key -->
+                    <div class="ui info message">					
+                        <div class="header">
+                            License Key
+                        </div>
+                        Enter here your encrypted and unique license key from Melissa Data. This is necessary for including with each request to the web service. If you do not have a license key, please contact your Melissa Data sales representative at 1-800-MELISSA (1-800-635-4772)
+                    </div>
+                    <div class="ui input right fluid field">
+                        <input type="text" placeholder="License Key..." name="id">
+                    </div>
+                    <p>
+                    
+                    <!-- Options -->
+                    <div class="ui info message">
+                        <div class="header">
+                            Options
+                        </div>
+						<ul class="list">
+                            <li>Correct First Name - Enables or disables spelling correction of first names</li>
+                            <li>Name Hint - Sets the most likely format of the FullName input string</li>
+                            <li>Gender Population -  Sets the gender balance of the source data; predominantly male, predominantly female, or neutral</li>
+                            <li>Gender Aggression - Sets how aggressively the service will attempt to genderize neutral first names</li>
+                            <li>Middle Name Logic - Controls how middle names are handled</li>
+                       </ul>
+                    </div>
+                    <!-- Option - Correct First Name -->
+                    <div class="ui selection dropdown">
+                        <input type="hidden" name="opt_CorrectFirstName">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Correct First Name</div>
+                        <div class="menu">
+                            <div class="item" data-value="On">On</div>
+                            <div class="item" data-value="Off">Off</div>					
+                        </div>
+                    </div>
+                    <!-- Option - Name Hint -->
+                    <div class="ui selection dropdown">
+                        <input type="hidden" name="opt_NameHint">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Name Hint</div>
+                        <div class="menu">
+                            <div class="item" data-value="DefinitelyFull">Definitely Full Name</div>
+                            <div class="item" data-value="VeryLikelyFull">Very Likely Full Name</div>
+                            <div class="item" data-value="ProbablyFull">Probably Full Name</div>
+                            <div class="item" data-value="Varying">Varying</div>
+                            <div class="item" data-value="ProbablyInverse">Probably Inverse (Last, First)</div>
+                            <div class="item" data-value="VeryLikelyInverse">Very Likely Inverse (Last, First)</div>
+                            <div class="item" data-value="DefinitelyInverse">Definitely Inverse (Last, First)</div>
+                            <div class="item" data-value="MixedFirstName">Mixed First Name</div>
+                            <div class="item" data-value="MixedLastName">Mixed Last Name</div>
+                        </div>
+                    </div>
+                    <!-- Option - Gender Population -->
+                    <div class="ui selection dropdown">
+                        <input type="hidden" name="opt_GenderPopulation">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Gender Population</div>
+                        <div class="menu">
+                            <div class="item" data-value="Male">Male</div>
+                            <div class="item" data-value="Mixed">Mixed</div>  
+                            <div class="item" data-value="Female">Female</div> 
+                        </div>
+                    </div>
+                    <!-- Option - Gender Aggression -->
+                    <div class="ui selection dropdown">
+                        <input type="hidden" name="opt_GenderAggression">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Gender Aggression</div>
+                        <div class="menu">
+                            <div class="item" data-value="Aggressive">Aggressive</div>
+                            <div class="item" data-value="Neutral">Neutral</div>  
+                            <div class="item" data-value="Conservative">Conservative</div> 
+                        </div>
+                    </div>
+                    <!-- Option - Middle Name Logic -->
+                    <div class="ui selection dropdown">
+                        <input type="hidden" name="opt_MiddleNameLogic">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Middle Name Logic</div>
+                        <div class="menu">
+                            <div class="item" data-value="ParseLogic">Parse Logic</div>
+                            <div class="item" data-value="HyphenatedLast">Hyphenated Last Name</div>  
+                            <div class="item" data-value="MiddleName">Middle Name</div> 
+                        </div>
+                    </div>
+                </div>               
+                <div class="column">
+					<h1>Request Elements</h1>
+					<p>
+                    <div class="ui input right fluid">
+                        <input type="text" placeholder="Full Name..." name="full">
+                    </div>
+                    <p>
+                    <div class="ui input right fluid">
+                        <input type="text" placeholder="Company..." name="comp">
+                    </div>
+                    <p>
+                    <p><br>
+                    <button class="ui icon button normal" onclick="doClear()">
+                        <i class="erase icon"></i>
+                        Clear
+                    </button>
+                    <button class="ui icon button positive" onclick="doVerify()">
+                        <i class="thumbs up icon"></i>
+                        Send Request
+                    </button>
+                </div>
+            </div>
+        </div>
+
+		<!-- REST tab -->
+        <div class="ui bottom attached tab segment" data-tab="tab-name3">
+            <pre name="restOutput">
+                Run a record through first
+            </pre>
+        </div>
+		
+        <!-- Output tab -->
+        <div class="ui bottom attached tab segment" data-tab="tab-name2">
+            <pre name="jsonOutput">
+                Run a record through first
+            </pre>
+        </div>
+        <p><br>
+    </div>
+
+    <script>
+        $('.menu .item').tab();
+        $('.ui.dropdown').dropdown();
+        $('.ui.accordion').accordion();
+
+        $('#selectAll').change(function () {
+            if ($(this).prop('checked')) {
+               $('input').prop('checked', true);
+            } else {
+                $('input').prop('checked', false);
+            }
+        });
+        $('#selectAll').trigger('change');
+
+        function getOpt() {
+            var opt = "";
+            if ($('input[name=opt_CorrectFirstName]').val() != "") opt += "CorrectFirstName:" + $('input[name=opt_CorrectFirstName]').val() + ",";
+            if ($('input[name=opt_NameHint]').val() != "") opt += "NameHint:" + $('input[name=opt_NameHint]').val() + ",";
+            if ($('input[name=opt_GenderPopulation]').val() != "") opt += "GenderPopulation:" + $('input[name=opt_GenderPopulation]').val() + ",";
+            if ($('input[name=opt_GenderAggression]').val() != "") opt += "GenderAggression:" + $('input[name=opt_GenderAggression]').val() + ",";
+            if ($('input[name=opt_MiddleNameLogic]').val() != "") opt += "MiddleNameLogic:" + $('input[name=opt_MiddleNameLogic]').val() + ",";
+            return opt;
+        }
+
+		function getUserInput() {
+			var userInput = "";	
+            userInput += "&full=" + $('input[name=full]').val();  
+            userInput += "&comp=" + $('input[name=comp]').val();  
+			return userInput;
+		}
+
+        function doVerify() {
+			var xhttp = new XMLHttpRequest();
+			var url = "https://globalname.melissadata.net/V3/WEB/GlobalName/doGlobalName?";
+			url += "&id=" + encodeURIComponent($('input[name=id]').val());
+			url += "&opt=" + getOpt().replace(/,\s*$/, "");
+			url += getUserInput();
+            url += "&format=JSON";
+			xhttp.open("GET", url, false);
+			xhttp.send();
+			console.log(url);
+			var response = JSON.parse(xhttp.responseText);
+			
+			$('pre[name=restOutput]').text('\n\n' + url + '\n\n\n');
+			$('pre[name=jsonOutput]').text(JSON.stringify(response, null, '\t'));
+			$('.ui.menu').find('.item').tab('change tab', 'tab-name2');
+        }
+
+        function doClear() {
+            $("input").each(function(index) {
+                $(this).val('');
+            })
+        }
+
+    </script>
+</body>
+</html>
