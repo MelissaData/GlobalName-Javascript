@@ -65,7 +65,7 @@
                             <li>Name Hint - Sets the most likely format of the FullName input string</li>
                             <li>Gender Population -  Sets the gender balance of the source data; predominantly male, predominantly female, or neutral</li>
                             <li>Gender Aggression - Sets how aggressively the service will attempt to genderize neutral first names</li>
-                            <li>Middle Name Logic - Controls how middle names are handled</li>
+                            <li>Salutation - Sets order of preferred salutation formats</li>
                        </ul>
                     </div>
                     <!-- Option - Correct First Name -->
@@ -85,14 +85,8 @@
                         <div class="default text">Name Hint</div>
                         <div class="menu">
                             <div class="item" data-value="DefinitelyFull">Definitely Full Name</div>
-                            <div class="item" data-value="VeryLikelyFull">Very Likely Full Name</div>
-                            <div class="item" data-value="ProbablyFull">Probably Full Name</div>
                             <div class="item" data-value="Varying">Varying</div>
-                            <div class="item" data-value="ProbablyInverse">Probably Inverse (Last, First)</div>
-                            <div class="item" data-value="VeryLikelyInverse">Very Likely Inverse (Last, First)</div>
                             <div class="item" data-value="DefinitelyInverse">Definitely Inverse (Last, First)</div>
-                            <div class="item" data-value="MixedFirstName">Mixed First Name</div>
-                            <div class="item" data-value="MixedLastName">Mixed Last Name</div>
                         </div>
                     </div>
                     <!-- Option - Gender Population -->
@@ -117,15 +111,50 @@
                             <div class="item" data-value="Conservative">Conservative</div> 
                         </div>
                     </div>
-                    <!-- Option - Middle Name Logic -->
+					<!-- Option - Salutation Order-->
+					
                     <div class="ui selection dropdown">
-                        <input type="hidden" name="opt_MiddleNameLogic">
+                        <input type="hidden" name="opt_Salutation1">
                         <i class="dropdown icon"></i>
-                        <div class="default text">Middle Name Logic</div>
+                        <div class="default text">Salutation 1</div>
                         <div class="menu">
-                            <div class="item" data-value="ParseLogic">Parse Logic</div>
-                            <div class="item" data-value="HyphenatedLast">Hyphenated Last Name</div>  
-                            <div class="item" data-value="MiddleName">Middle Name</div> 
+                            <div class="item" data-value="Formal">Formal</div>
+                            <div class="item" data-value="Informal">Informal</div>  
+                            <div class="item" data-value="FirstLast">FirstLast</div> 
+							<div class="item" data-value="Blank">Blank</div> 
+                        </div>
+                    </div>
+					<div class="ui selection dropdown">
+                        <input type="hidden" name="opt_Salutation2">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Salutation 2</div>
+                        <div class="menu">
+                            <div class="item" data-value="Formal">Formal</div>
+                            <div class="item" data-value="Informal">Informal</div>  
+                            <div class="item" data-value="FirstLast">FirstLast</div> 
+							<div class="item" data-value="Blank">Blank</div> 
+                        </div>
+                    </div>
+					<div class="ui selection dropdown">
+                        <input type="hidden" name="opt_Salutation3">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Salutation 3</div>
+                        <div class="menu">
+                            <div class="item" data-value="Formal">Formal</div>
+                            <div class="item" data-value="Informal">Informal</div>  
+                            <div class="item" data-value="FirstLast">FirstLast</div> 
+							<div class="item" data-value="Blank">Blank</div> 
+                        </div>
+                    </div>
+					<div class="ui selection dropdown">
+                        <input type="hidden" name="opt_Salutation4">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Salutation 4</div>
+                        <div class="menu">
+                            <div class="item" data-value="Formal">Formal</div>
+                            <div class="item" data-value="Informal">Informal</div>  
+                            <div class="item" data-value="FirstLast">FirstLast</div> 
+							<div class="item" data-value="Blank">Blank</div> 
                         </div>
                     </div>
                 </div>               
@@ -138,6 +167,11 @@
                     <p>
                     <div class="ui input right fluid">
                         <input type="text" placeholder="Company..." name="comp">
+                    </div>
+                    <p>
+					<p>
+                    <div class="ui input right fluid">
+                        <input type="text" placeholder="Country..." name="country">
                     </div>
                     <p>
                     <p><br>
@@ -189,20 +223,50 @@
             if ($('input[name=opt_NameHint]').val() != "") opt += "NameHint:" + $('input[name=opt_NameHint]').val() + ",";
             if ($('input[name=opt_GenderPopulation]').val() != "") opt += "GenderPopulation:" + $('input[name=opt_GenderPopulation]').val() + ",";
             if ($('input[name=opt_GenderAggression]').val() != "") opt += "GenderAggression:" + $('input[name=opt_GenderAggression]').val() + ",";
-            if ($('input[name=opt_MiddleNameLogic]').val() != "") opt += "MiddleNameLogic:" + $('input[name=opt_MiddleNameLogic]').val() + ",";
+			if ($('input[name=opt_Salutation1]').val() != "" || $('input[name=opt_Salutation2]').val() != "" || $('input[name=opt_Salutation3]').val() != "" || $('input[name=opt_Salutation4]').val() != "") {
+				opt += "Salutation:" 
+				if ($('input[name=opt_Salutation1]').val() != "") {
+					opt += $('input[name=opt_Salutation1]').val();
+					
+					if ($('input[name=opt_Salutation2]').val() != "") {
+						opt += "|" + $('input[name=opt_Salutation2]').val();
+					}
+					if ($('input[name=opt_Salutation3]').val() != "") {
+						opt += "|" + $('input[name=opt_Salutation3]').val();
+					}
+					if ($('input[name=opt_Salutation4]').val() != "") {
+						opt += "|" + $('input[name=opt_Salutation4]').val();
+					}
+				} else if ($('input[name=opt_Salutation2]').val() != "") {
+					opt += $('input[name=opt_Salutation2]').val();
+					if ($('input[name=opt_Salutation3]').val() != "") {
+						opt += "|" + $('input[name=opt_Salutation3]').val();
+					}
+					if ($('input[name=opt_Salutation4]').val() != "") {
+						opt += "|" + $('input[name=opt_Salutation4]').val();
+					}
+				} else if ($('input[name=opt_Salutation3]').val() != "") {
+					opt += $('input[name=opt_Salutation3]').val();
+					if ($('input[name=opt_Salutation4]').val() != "") {
+						opt += "|" + $('input[name=opt_Salutation4]').val();
+					}
+				} else if ($('input[name=opt_Salutation4]').val() != "") 
+					opt += $('input[name=opt_Salutation4]').val();
+			}
             return opt;
         }
 
 		function getUserInput() {
 			var userInput = "";	
             userInput += "&full=" + $('input[name=full]').val();  
-            userInput += "&comp=" + $('input[name=comp]').val();  
+            userInput += "&comp=" + $('input[name=comp]').val();
+			userInput += "&ctry=" + $('input[name=country]').val(); 			
 			return userInput;
 		}
 
         function doVerify() {
 			var xhttp = new XMLHttpRequest();
-			var url = "https://globalname.melissadata.net/V3/WEB/GlobalName/doGlobalName?";
+			var url = "https://globalname-beta.melissadata.net/V3/WEB/GlobalName/doGlobalName?t=";
 			url += "&id=" + encodeURIComponent($('input[name=id]').val());
 			url += "&opt=" + getOpt().replace(/,\s*$/, "");
 			url += getUserInput();
